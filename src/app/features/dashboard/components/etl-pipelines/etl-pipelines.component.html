@@ -1,0 +1,63 @@
+<p>etl-pipelines works!</p>
+<form class="app-etl-pipelines" [formGroup]="etlForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="etlType">ETL TYPE:</mat-label>
+    <input matInput id="etlType" formControlName="etlType">
+  </mat-form-field>
+
+  <mat-form-field>
+    <!-- TODO: GET DROP DOWN FOR SOURCE APP ID -->
+    <mat-label for="fkSourceAppId">SOURCE APP ID:</mat-label>
+    <input matInput id="fkSourceAppId" formControlName="fkSourceAppId">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="fkDestAppId">DEST APP ID:</mat-label>
+    <input matInput id="fkDestAppId" formControlName="fkDestAppId">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="fkReportId">REPORT ID:</mat-label>
+    <input matInput id="fkReportId" formControlName="fkReportId">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="taskTitle">TASK TITLE:</mat-label>
+    <input matInput id="taskTitle" formControlName="taskTitle">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="taskGroup">TASK GROUP:</mat-label>
+    <input matInput id="taskGroup" formControlName="taskGroup">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="destTable">DEST TABLE:</mat-label>
+    <input matInput id="destTable" formControlName="destTable">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="postLoadProdId">POST LOAD PROC ID:</mat-label>
+    <input matInput id="postLoadProdId" formControlName="postLoadProdId">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label for="preLoadProdId">PRE LOAD PROC ID:</mat-label>
+    <input matInput id="preLoadProdId" formControlName="preLoadProdId">
+  </mat-form-field>
+
+  <button mat-flat-button type="submit" [disabled]="!etlForm.valid">Submit</button>
+
+</form>
+
+<mat-list role="list">
+  <ng-container>
+      <mat-list-item role="listitem" *ngFor="let etl of etls()" (click)="onSelectEtl(etl)">{{ etl.etlId }}</mat-list-item>
+  </ng-container>
+</mat-list>
+
+<div>
+  <ng-container *ngIf="etlSelected">
+    <p>This is the selected etl{{ etlSelected.etlId }}</p>
+  </ng-container>
+</div>

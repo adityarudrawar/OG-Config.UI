@@ -1,0 +1,14 @@
+<form class="app-search-form">
+  <mat-form-field>
+    <mat-label>Application Name</mat-label>
+    <input matInput [formControl]="searchInput">
+  </mat-form-field>
+</form>
+<!-- TODO: When clicked on any of the list item, send the data to the dashboard component-->
+<mat-list role="list">
+  <ng-container *ngIf="searchInput.value && appSelected" >
+    <div *ngIf="appSelected">
+      <mat-list-item role="listitem" *ngFor="let app of apps()" (click)="onSelectApp(app)">{{app.APPID}}</mat-list-item>
+    </div>
+  </ng-container>
+</mat-list>

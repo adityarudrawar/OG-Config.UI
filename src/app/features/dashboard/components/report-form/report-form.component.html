@@ -1,0 +1,68 @@
+<form class="app-report-form" [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="reportName">Report Name:</mat-label>
+    <input matInput id="reportName" formControlName="reportName">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="reportDesc">Report Description:</mat-label>
+    <input matInput id="reportDesc" formControlName="reportDesc">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="priority">Priority:</mat-label>
+    <input matInput id="priority" formControlName="priority">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="fromTableName">From Table Name</mat-label>
+    <input matInput id="fromTableName" formControlName="fromTableName">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="joinConditionWithTable">Join Condition With Table:</mat-label>
+    <input matInput id="joinConditionWithTable" formControlName="joinConditionWithTable">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="fileType">File Type:</mat-label>
+    <input matInput id="fileType" formControlName="fileType">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="region">Region:</mat-label>
+    <input matInput id="region" formControlName="region">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="headers">Headers:</mat-label>
+    <input matInput id="headers" formControlName="headers">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="delimiter">Delimiter:</mat-label>
+    <input matInput id="delimiter" formControlName="delimiter">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="fnameCondition">F Name Condition:</mat-label>
+    <input matInput id="fnameCondition" formControlName="fnameCondition">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="actionCondition">Action Condition:</mat-label>
+    <input matInput id="actionCondition" formControlName="actionCondition">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="headers_2">Headers_2:</mat-label>
+    <input matInput id="headers_2" formControlName="headers_2">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="headersCount">Headers Count:</mat-label>
+    <input matInput id="headersCount" formControlName="headersCount">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="fileName">File Name:</mat-label>
+    <input matInput id="fileName" formControlName="fileName">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="ctlFileName">CTL File Name:</mat-label>
+    <input matInput id="ctlFileName" formControlName="ctlFileName">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label for="reportGroupId">Report Group Id:</mat-label>
+    <input matInput id="reportGroupId" formControlName="reportGroupId">
+  </mat-form-field>
+
+  <button mat-flat-button type="submit" [disabled]="!reportForm.valid">Submit</button>
+</form>
