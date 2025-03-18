@@ -6,7 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { EtlMasterService } from '../../../../core/services/etl-master.service';
 import { MatListModule } from '@angular/material/list';
 import { EtlMasterModel } from '../../../../core/models/etl-master.model';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { ReportService } from '../../../../core/services/report.service';
 import { ReportModel } from '../../../../core/models/report.model';
 
@@ -20,7 +20,6 @@ import { ReportModel } from '../../../../core/models/report.model';
     MatInputModule,
     MatButtonModule,
     MatListModule,
-    NgIf,
     NgFor
   ],
   templateUrl: './etl-pipelines.component.html',

@@ -1,25 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import {AppModel} from '../../core/models/app.model';
-import { AppService } from '../../core/services/app.service';
-import { AppSearchComponent } from './components/app-search/app-search.component';
-import { ReportFormComponent } from './components/report-form/report-form.component';
-
+import { Component, ViewChild } from '@angular/core';
+import { MatStep, MatStepper } from '@angular/material/stepper';
+import { ReportDetailsComponent } from './components/report-details/report-details.component';
+import { ReportMetadataComponent } from './components/report-metadata/report-metadata.component';
+import { ReportComputationComponent } from './components/report-computation/report-computation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @Component({
-  selector: 'app-dashboard',
-  imports: [AppSearchComponent, ReportFormComponent],
+  selector: 'dashboard',
+  imports:[MatStepper,
+    MatStep,
+    ReportDetailsComponent, ReportMetadataComponent, ReportComputationComponent, ReactiveFormsModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  apps: AppModel[] = [];
-  selectedApp: AppModel;
+  @ViewChild('stepper') stepper: MatStepper;
+  @ViewChild('ReportDetailsComponent') detailsComponent: ReportDetailsComponent;
+  @ViewChild('ReportMetadataComponent') metadataComponent: ReportMetadataComponent;
+  @ViewChild('ReportComputationComponent') computationComponent: ReportComputationComponent;
 
-  constructor(private appService: AppService) {}
+  constructor() {}
 
-  onAppSelected(app: AppModel): void {
-    this.selectedApp = app;
-    console.log('Selected app:', this.selectedApp);
-    // Optionally navigate to a detailed view or load related reports
+  nextStepDetails() {
+    this.detailsComponent.submitForm().then((response:any) => {
+      // API returned 200, so move to next step.
+      this.stepper.next();
+      console.log('Response from API:', response);
+    }).catch((err: any) => {
+      // Handle API error here (e.g., show a message to the user).
+      console.error('Error submitting report details:', err);
+    });
   }
 
+  nextStepMetadata() {
+    this.metadataComponent.submitForm().then((response:any) => {
+      this.stepper.next();
+      console.log('Response from API:', response);
+    }).catch((err: any) => {
+      console.error('Error submitting metadata:', err);
+    });
+  }
+
+  nextStepComputation() {
+    this.computationComponent.submitForm().then((response:any) => {
+      // Final submission or finish process.
+      console.log('Response from API:', response);
+      this.stepper.next();
+    }).catch((err: any) => {
+      console.error('Error during computation:', err);
+    });
+  }
 }

@@ -1,5 +1,34 @@
-<p>This is the dashboard</p>
+<p>Where is the dashboard?</p>
+<mat-stepper #stepper linear>
+  <mat-step [stepControl]="detailsComponent.form">
+    <ng-template matStepLabel>Report Details</ng-template>
+    <app-report-details #detailsComponent></app-report-details>
+    <div>
+      <button mat-button color="primary" (click)="nextStepDetails()">
+        Submit & Next
+      </button>
+    </div>
+  </mat-step>
 
-<div class="dashboard-container">
-  <app-search placeholder="Search for an APP" (appSelected)="onAppSelected($event)"></app-search>
-</div>
+  <mat-step [stepControl]="metadataComponent.form">
+    <ng-template matStepLabel>Report Metadata</ng-template>
+    <app-report-metadata #metadataComponent></app-report-metadata>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button color="primary" (click)="nextStepMetadata()">
+        Submit & Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="computationComponent.form">
+    <ng-template matStepLabel>Computation</ng-template>
+    <app-report-computation #computationComponent></app-report-computation>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button color="primary" (click)="nextStepComputation()">
+        Submit & Finish
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>

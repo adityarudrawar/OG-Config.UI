@@ -55,9 +55,3 @@
       <mat-list-item role="listitem" *ngFor="let etl of etls()" (click)="onSelectEtl(etl)">{{ etl.etlId }}</mat-list-item>
   </ng-container>
 </mat-list>
-
-<div>
-  <ng-container *ngIf="etlSelected">
-    <p>This is the selected etl{{ etlSelected.etlId }}</p>
-  </ng-container>
-</div>
