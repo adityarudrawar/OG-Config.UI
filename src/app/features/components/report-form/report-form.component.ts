@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { ReportService } from '../../../../core/services/report.service';
+import { ReportService } from '../../../core/services/report.service';
 
 @Component({
   selector: 'app-report-form',

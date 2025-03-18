@@ -1,0 +1,53 @@
+<div class="bulk-report-onboard-container">
+  <mat-form-field>
+    <mat-label>Select Template</mat-label>
+    <mat-select [(value)] = "selectedTemplate">
+      @for (template of uploadTemplates; track template) {
+        <mat-option [value] = "template">{{ template }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-chip>Selected Template: <b>{{ selectedTemplate }}</b></mat-chip>
+  <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;" />
+  <button mat-flat-button extended (click)="fileInput.click()" disabled="{{ !selectedTemplate }}">
+    <mat-icon>upload</mat-icon>
+    Upload
+  </button>
+  <a style="width: 8px;"></a>
+  <mat-chip *ngIf="uploadedFile">Uploaded File Name: <b>{{ uploadedFile.name }}</b></mat-chip>
+  <span *ngIf="errorMessage" style="margin-left: 8px; color: red;">{{ errorMessage }}</span>
+  <button *ngIf="isFileValid" mat-flat-button extended (click)="submitFile()">Submit</button>
+</div>
+
+<p>Excel File Component</p>
+
+ <!-- Sheet Selector -->
+<mat-form-field *ngIf="isFileValid">
+  <mat-label>Select Sheet</mat-label>
+  <mat-select [(value)]="selectedSheet">
+    @for (sheet of sheets; track sheet) {
+    <mat-option [value]="sheet">{{ sheet }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+<!-- Excel Table -->
+<div *ngIf="isFileValid && excelData[selectedSheet]">
+  <table mat-table>
+    @for(row of excelData[selectedSheet]; track $index; let rowIdx = $index) {
+      <tr mat-row>
+        @for (cell of row; track $index; let colIdx = $index) {
+          <td
+            mat-cell
+            contenteditable="true"
+            (blur)="updateCell(rowIdx, colIdx, $event)">
+            {{ cell }}
+          </td>
+        }
+      </tr>
+    }
+  </table>
+</div>

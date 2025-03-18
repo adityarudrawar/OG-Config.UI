@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatStep, MatStepper } from '@angular/material/stepper';
-import { ReportDetailsComponent } from './components/report-details/report-details.component';
-import { ReportMetadataComponent } from './components/report-metadata/report-metadata.component';
-import { ReportComputationComponent } from './components/report-computation/report-computation.component';
+import { ReportDetailsComponent } from '../components/report-details/report-details.component';
+import { ReportMetadataComponent } from '../components/report-metadata/report-metadata.component';
+import { ReportComputationComponent } from '../components/report-computation/report-computation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'dashboard',

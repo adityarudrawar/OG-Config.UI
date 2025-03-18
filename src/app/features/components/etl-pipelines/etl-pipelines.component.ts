@@ -3,12 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { EtlMasterService } from '../../../../core/services/etl-master.service';
+import { EtlMasterService } from '../../../core/services/etl-master.service';
 import { MatListModule } from '@angular/material/list';
-import { EtlMasterModel } from '../../../../core/models/etl-master.model';
+import { EtlMasterModel } from '../../../core/models/etl-master.model';
 import { NgFor } from '@angular/common';
-import { ReportService } from '../../../../core/services/report.service';
-import { ReportModel } from '../../../../core/models/report.model';
+import { ReportService } from '../../../core/services/report.service';
+import { ReportModel } from '../../../core/models/report.model';
 
 @Component({
   selector: 'app-etl-pipelines',
